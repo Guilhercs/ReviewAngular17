@@ -1,8 +1,43 @@
 <H1>Control Flow</H1>
 
 <h2>If and Else</h2>
+
 @if (isTrue) {
-  <p>Condição verdadeira</p>
+
+<p>Condição verdadeira</p>
+
 } @else {
-  <p>Condição Falsa</p>
+
+<p>Condição Falsa</p>
+
+}
+
+<br />
+
+@if (loadingData$ | async; as data) {
+
+{{ data }}
+
+} @else { Loading... }
+
+<br />
+
+<h2>For</h2>
+
+@for (item of loadingData$ | async; track $index) {
+
+<li>{{ item }}</li>
+
+}
+
+<h2>For and Empty</h2>
+
+@for (item of emptyArray$ | async; track $index) {
+
+<li>{{ item }}</li>
+
+} @empty {
+
+<p>empty array</p>
+
 }
