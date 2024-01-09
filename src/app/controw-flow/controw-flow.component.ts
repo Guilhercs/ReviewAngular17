@@ -17,6 +17,7 @@ export class ControwFlowComponent {
     'item 3',
   ]).pipe(delay(4000));
   public emptyArray$ = new BehaviorSubject<string[]>([])
+  public condition = true;
 
   ngOnInit() {
     setTimeout(() => {
