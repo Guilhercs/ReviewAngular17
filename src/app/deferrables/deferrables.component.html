@@ -1,0 +1,79 @@
+<!--
+  on - especifica uma condção de acionador usando um acionador de lista.
+  (idle, timer, viewport, interaction, hover, immediate, prefetch)
+
+  idle: valor padrão (faz o download de um chunk após o carregamento da tela e quando o navegador estiver inativo
+   - ganhando performance);
+
+  timer: carregar o defer, e após um tempo estipulado carrega o chunk, exemplo @defer (on (1000ms));
+
+  viewport: carrega quando chegar no componente, exemplo com scroll;
+
+  interaction: carrega o componente após a interação do usuário
+  exemplo de uso:
+    @defer (on interaction) {
+      ...
+    }
+
+    <button #trigger>clique aqui para carregar o componente</button>
+    @defer (on interaction(trigger)) {
+      ...
+    };
+
+  hover: Carrega quando colocar o ponteiro em cima;
+
+  immediate: carrega imediatamente;
+
+  prefetch: utilizado para uma adicionar um caarregamento, por exemplo:
+
+  aqui o carregamento será com o idle, mas o componente será renderizado
+  conforme a interação do usuário;
+
+  @defer (on interaction; prefetch on idle) {
+    ...
+  }
+  ,
+-->
+
+<h1>Deferrables</h1>
+
+<h2>Idle Deferrable (Default)</h2>
+<p>Example:</p>
+
+@defer (on idle) {
+
+<app-deferrables-view/>
+
+} @placeholder {
+
+  <p>preview view</p>
+
+} @loading {
+
+  <p>Loading...</p>
+
+} @error {
+
+  <p>loading failed</p>
+
+}
+
+<h2>Interaction Defer</h2>
+<button #onClick>Clique aqui</button>
+
+@defer (on interaction(onClick)) {
+
+  <app-deferrables-view/>
+
+} @placeholder {
+
+  <p>preview view</p>
+
+} @loading {
+
+  <p>Loading...</p>
+
+} @error {
+
+  <p>loading failed</p>
+}
