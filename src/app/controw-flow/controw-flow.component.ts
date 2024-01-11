@@ -27,7 +27,7 @@ export class ControwFlowComponent {
     }, 3000);
   }
 
-  goTo() {
-    this.router.navigate(['deferrables']);
+  goTo(routerName: string) {
+    this.router.navigate([routerName]);
   }
 }

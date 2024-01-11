@@ -2,10 +2,12 @@
   on - especifica uma condção de acionador usando um acionador de lista.
   (idle, timer, viewport, interaction, hover, immediate, prefetch)
 
-  idle: valor padrão (faz o download de um chunk após o carregamento da tela e quando o navegador estiver inativo
+  idle: valor padrão (faz o download de um chunk após o carregamento da
+  tela e quando o navegador estiver inativo
    - ganhando performance);
 
-  timer: carregar o defer, e após um tempo estipulado carrega o chunk, exemplo @defer (on (1000ms));
+  timer: carregar o defer, e após um tempo estipulado carrega o chunk,
+  exemplo @defer (on (1000ms));
 
   viewport: carrega quando chegar no componente, exemplo com scroll;
 
@@ -31,8 +33,20 @@
 
   @defer (on interaction; prefetch on idle) {
     ...
+  },
+
+  when: condição caso true renderiza determinado componente;
+
+  adiciona um timer antes de carregar;
+  @placeholder (minimum 2000s) {
+    ...
   }
-  ,
+
+  verifica o carregamento do chunk em 150ms, caso não renderizou o tempo de
+  carregamento vai para 2000s
+  @loading (after 150ms; minimum 2000s) {
+    ...
+  }
 -->
 
 <h1>Deferrables</h1>
@@ -42,19 +56,19 @@
 
 @defer (on idle) {
 
-<app-deferrables-view/>
+<app-deferrables-view />
 
 } @placeholder {
 
-  <p>preview view</p>
+<p>preview view</p>
 
 } @loading {
 
-  <p>Loading...</p>
+<p>Loading...</p>
 
 } @error {
 
-  <p>loading failed</p>
+<p>loading failed</p>
 
 }
 
@@ -63,17 +77,25 @@
 
 @defer (on interaction(onClick)) {
 
-  <app-deferrables-view/>
+<app-deferrables-view />
 
 } @placeholder {
 
-  <p>preview view</p>
+<p>preview view</p>
 
 } @loading {
 
-  <p>Loading...</p>
+<p>Loading...</p>
 
 } @error {
 
-  <p>loading failed</p>
+<p>loading failed</p>
+}
+
+<h2>Deferrable When</h2>
+
+@defer (when isTrue ) {
+
+<p>page loaded</p>
+
 }

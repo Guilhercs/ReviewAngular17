@@ -1,3 +1,4 @@
+import { Observable, delay, of } from 'rxjs';
 import { DeferrablesViewComponent } from './deferrables-view/deferrables-view.component';
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 
@@ -9,4 +10,11 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
   styleUrl: './deferrables.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class DeferrablesComponent {}
+export class DeferrablesComponent {
+  isTrue = false;
+  constructor() {
+    setTimeout(() => {
+      this.isTrue = true;
+    }, 5000);
+  }
+}
