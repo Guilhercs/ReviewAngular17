@@ -4,3 +4,12 @@
 <!-- é necessário chamar o signal em uma função ao invés da propriedade-->
 <p>{{ firstName() }} {{ lastName() }}</p>
 <p>full name: {{ fullName() }}</p>
+
+@for (item of array(); track item) {
+
+<li>{{ item }}</li>
+
+}
+
+<br />
+<button (click)="updateArray()">Update Array</button>

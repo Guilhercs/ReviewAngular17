@@ -13,4 +13,13 @@ export class SignalsComponent {
   public fullName = computed(() => {
     return `${this.firstName()} ${this.lastName()}`;
   });
+  public array = signal([1]);
+
+  constructor() {}
+
+  updateArray() {
+    this.array.update((oldValue: Array<number>) => {
+      return [...oldValue, oldValue.length + 1];
+    });
+  }
 }

@@ -1,0 +1,11 @@
+<h1>input and output</h1>
+
+<app-input [InputName]="'clarice'" />
+
+<app-output (outputName)="output($event)" />
+
+<!-- <app-output (outputName)="outputName.set($event)" /> -->
+
+<h2>output value</h2>
+
+<p>{{ outputName() }}</p>
