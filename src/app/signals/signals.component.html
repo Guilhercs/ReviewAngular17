@@ -13,3 +13,35 @@
 
 <br />
 <button (click)="updateArray()">Update Array</button>
+
+<br />
+
+<h2>Tasks</h2>
+<p>Rxjs to signal</p>
+
+@for (item of getListTask(); track item) {
+
+<p>{{ item | json }}</p>
+
+}@empty {
+
+<p>Loading...</p>
+
+}
+
+<br />
+@if(getTaskId(); as data){
+<p>id: {{ data.id }}</p>
+<p>title: {{ data.title }}</p>
+}
+
+<button (click)="createTask()">Create</button>
+
+<br />
+<br />
+
+<input type="text" #updateId placeholder="update id" />
+<br />
+<input type="text" #updateTitle placeholder="update title" />
+<br />
+<button (click)="taskUpdate(updateId.value, updateTitle.value)">update</button>
