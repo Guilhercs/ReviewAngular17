@@ -22,6 +22,7 @@ export class ServiceService {
     return this.#setListTask.asReadonly();
   }
   getListTask(): Observable<ITask[]> {
+    this.#setListTask.set(null);
     return this.#http.get<ITask[]>(this.#url()).pipe(
       shareReplay(),
       tap((res) => this.#setListTask.set(res))
@@ -40,26 +41,15 @@ export class ServiceService {
     );
   }
 
-  #postTaskId = signal<ITask | null>(null);
-  get postTask() {
-    return this.#postTaskId.asReadonly();
-  }
-
   postTask$(title: string): Observable<ITask> {
-    return this.#http.post<ITask>(this.#url(), { title }).pipe(
-      shareReplay(),
-      tap((res) => this.#postTaskId.set(res))
-    );
-  }
-  #updateTask$ = signal<ITask | null>(null);
-  get updateTask() {
-    return this.#updateTask$.asReadonly();
+    return this.#http.post<ITask>(this.#url(), { title });
   }
 
   updateTask$(id: string, title: string): Observable<ITask> {
-    return this.#http.patch<ITask>(`${this.#url()}/${id}`, { id, title }).pipe(
-      shareReplay(),
-      tap((res) => this.#updateTask$.set(res))
-    );
+    return this.#http.patch<ITask>(`${this.#url()}/${id}`, { id, title });
+  }
+
+  taskDelete$(id: string): Observable<ITask> {
+    return this.#http.delete<ITask>(`${this.#url()}/${id}`);
   }
 }

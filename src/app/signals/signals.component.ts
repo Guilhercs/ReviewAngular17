@@ -46,9 +46,17 @@ export class SignalsComponent {
         error: (e) => console.log(e),
       });
   }
-  taskUpdate(id: string, title: string) {
+
+  public taskUpdate(id: string, title: string) {
     return this.#service
       .updateTask$(id, title)
+      .pipe(concatMap(() => this.#service.getListTask()))
+      .subscribe();
+  }
+
+  public taskDelete(id: string) {
+    return this.#service
+      .taskDelete$(id)
       .pipe(concatMap(() => this.#service.getListTask()))
       .subscribe();
   }

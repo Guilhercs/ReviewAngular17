@@ -44,4 +44,10 @@
 <br />
 <input type="text" #updateTitle placeholder="update title" />
 <br />
+<br />
 <button (click)="taskUpdate(updateId.value, updateTitle.value)">update</button>
+<br />
+<br />
+<input type="text" #deleteId placeholder="delete id" />
+<br />
+<button (click)="taskDelete(deleteId.value)">delete</button>
