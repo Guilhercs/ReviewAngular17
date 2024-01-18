@@ -34,7 +34,6 @@ export class SignalsComponent {
   ngOnInit() {
     // this.getTasks();
     this.#service.getListTask().subscribe();
-    this.#service.getTaskId('KomrPzjld8L7w0WLmFGb').subscribe();
   }
 
   public createTask() {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
-import { Observable, shareReplay, take, tap } from 'rxjs';
+import { Observable, shareReplay, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 export interface ITask {
@@ -11,6 +11,7 @@ export interface ITask {
 @Injectable({
   providedIn: 'root',
 })
+
 export class ServiceService {
   #http = inject(HttpClient);
   #url = signal(environment.apiTask);
