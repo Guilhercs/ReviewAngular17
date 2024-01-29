@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { ITask, ServiceService } from '../shared/services/service.service';
 import { CommonModule } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -11,7 +11,7 @@ import { concatMap, switchMap } from 'rxjs';
   templateUrl: './signals.component.html',
   styleUrl: './signals.component.scss',
 })
-export class SignalsComponent {
+export class SignalsComponent implements OnInit {
   #service = inject(ServiceService);
 
   public firstName = signal('Stephen');

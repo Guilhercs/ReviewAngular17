@@ -19,6 +19,7 @@ export class ServiceService {
   constructor() {}
 
   #setListTask = signal<ITask[] | null>(null);
+
   get getList() {
     return this.#setListTask.asReadonly();
   }
